@@ -15,8 +15,10 @@ app.use(bodyParser.json());
 //configure body-parser ends here
 app.use(morgan("dev")); // configire morgan
 // define first route
+app.use(express.static(__dirname + '/public/dist'));
+
 app.get("/", (req, res) => {
-  console.log("Hello MEVN Soldier");
+    res.sendFile(__dirname + '/public/dist/index.html');
 });
 const userRoutes = require("./shoppingCart/route/user");
 const productRoutes  = require("./shoppingCart/route/product");
